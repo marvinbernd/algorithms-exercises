@@ -7,7 +7,34 @@
 */
 
 const mergeSort = (nums) => {
-  // code goes here
+  // best case, return if length 1 or 0
+  if (nums.length < 2) return nums;
+
+  // break intwo two smaller arrays
+  const halfLength = Math.floor(nums.length / 2);
+  const arrLeft = nums.slice(0, halfLength);
+  const arrRight = nums.slice(halfLength);
+
+  // call mergeSort on left and right
+  const sortedLeft = mergeSort(arrLeft);
+  const sortedRight = mergeSort(arrRight);
+
+  // return the merge of left and right
+  return merge(sortedLeft, sortedRight);
+};
+
+const merge = (arrLeft, arrRight) => {
+  let results = [];
+
+  while (arrLeft.length && arrRight.length) {
+    if (arrLeft[0] <= arrRight[0]) {
+      results.push(arrLeft.shift());
+    } else {
+      results.push(arrRight.shift());
+    }
+  }
+
+  return results.concat(arrLeft, arrRight);
 };
 
 // unit tests
