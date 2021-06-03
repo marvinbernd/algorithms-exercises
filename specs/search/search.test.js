@@ -8,7 +8,15 @@ function linearSearch(id, array) {
 }
 
 function binarySearch(id, array) {
-  // code goes here
+  do {
+    let middle = Math.floor(array.length / 2);
+    let currentNumber = array[middle];
+
+    if (currentNumber.id < id) {
+    }
+  } while (currentNumber !== id);
+
+  return array[currentNumber];
 }
 
 // unit tests
@@ -30,7 +38,7 @@ test.skip("linear search", function () {
       { id: 2, name: "Marc" },
       { id: 51, name: "Chris" },
       lookingFor,
-      { id: 14, name: "Ben" }
+      { id: 14, name: "Ben" },
     ])
   ).toBe(lookingFor);
 });
@@ -52,7 +60,7 @@ test.skip("binary search", function () {
       { id: 19, name: "Marc" },
       { id: 21, name: "Chris" },
       lookingFor,
-      { id: 24, name: "Ben" }
+      { id: 24, name: "Ben" },
     ])
   ).toBe(lookingFor);
 });
